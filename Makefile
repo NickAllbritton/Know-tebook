@@ -1,2 +1,4 @@
-build: main.cpp
-	g++ main.cpp -o knowtebook `pkg-config --cflags --libs gtk4`
+sources=main.cpp
+
+build: $(sources)
+	g++ $(sources) -o knowtebook `pkg-config --cflags --libs gtk4`
