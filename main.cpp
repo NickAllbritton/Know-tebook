@@ -1,14 +1,4 @@
-#include <gtk/gtk.h>
-
-static void activate(GtkApplication* app, gpointer user_data)
-{
-    GtkWidget* window;  
-
-    window = gtk_application_window_new(app);
-    gtk_window_set_title(GTK_WINDOW(window), "Know-tebook");
-    gtk_window_maximize(GTK_WINDOW(window));
-    gtk_window_present(GTK_WINDOW(window));
-}
+#include <gtkmm.h>
 
 // try using GtkDrawingArea
 // This creates a canvas on which the user can draw. 
@@ -20,15 +10,21 @@ static void activate(GtkApplication* app, gpointer user_data)
 // 4. Create notebook mode with a toolbar on the left and a notebook that is a canvas on which the user can write,type,insert pictures
 // 5. Profit? Not really but you get the idea.
 
-int main (int argc, char* argv[]) 
+class PrimaryWindow : public Gtk::Window
 {
-    GtkApplication* app;
-    int status;
+public:
+  PrimaryWindow();
+};
 
-    app = gtk_application_new("beta.knowtebook", G_APPLICATION_DEFAULT_FLAGS);
-    g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
-    status = g_application_run(G_APPLICATION(app), argc, argv);
-    g_object_unref(app);
+PrimaryWindow::PrimaryWindow()
+{
+  set_title("Know-tebook");
+  maximize();
+}
 
-    return status;
+int main(int argc, char* argv[])
+{
+  auto app = Gtk::Application::create("beta.knowtebook");
+
+  return app->make_window_and_run<PrimaryWindow>(argc, argv);
 }
