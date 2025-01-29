@@ -15,5 +15,6 @@ int main(int argc, char* argv[])
 {
   auto app = Gtk::Application::create("beta.knowtebook");
 
+// Create a primary window
   return app->make_window_and_run<PrimaryWindow>(argc, argv);
 }
