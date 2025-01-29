@@ -14,11 +14,11 @@ Notebook::~Notebook()
 void Notebook::on_draw(const Cairo::RefPtr<Cairo::Context>& cr, int width, int height)
 {
     // TODO: Use a grid or other padding structure offered by GTK/GTKmm to place the notebook
-    // coordinates for the center of the window
+    // coordinates for the center of the notebook
     int xc = width / 2;
     int yc = height/ 2;
 
-    cr->set_line_width(10.0);
+    cr->set_line_width(1.0);
 
     cr->set_source_rgb(0.8, 0.0, 0.0);
 
